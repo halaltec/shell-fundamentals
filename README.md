@@ -1,77 +1,71 @@
-# shell-fundamentals
-bash-todo-manager
+````md
+# Bash To-Do List Manager
+
+This project is a simple interactive To-Do List Manager built with Bash scripting.
+
+## Features
+
+- View all tasks
+- Add new tasks
+- Delete tasks
+- Store tasks in a file
+- Interactive terminal menu
+
+## File Storage
+
+Tasks are stored in:
+
+~/todo.txt
+
+---
+
+## How to Run
+
+1. Make the script executable:
+
 ```bash
-#!/bin/bash
+chmod +x todo.sh
+````
 
-# File location
-TODO_FILE="$HOME/todo.txt"
+2. Run the script:
 
-# Create file if it doesn't exist
-touch "$TODO_FILE"
+```bash
+./todo.sh
+```
 
-while true
-do
-    echo "=========================="
-    echo "      TO-DO MANAGER"
-    echo "=========================="
-    echo "1. View all tasks"
-    echo "2. Add a new task"
-    echo "3. Delete a task"
-    echo "4. Exit"
-    echo "=========================="
+---
 
-    read -p "Choose an option: " choice
+# Screenshots
 
-    case $choice in
-        1)
-            echo ""
-            echo "------ TASK LIST ------"
+## Main Menu
 
-            if [ ! -s "$TODO_FILE" ]; then
-                echo "No tasks available."
-            else
-                nl -w2 -s'. ' "$TODO_FILE"
-            fi
+![Main Menu](screenshots/menu.png)
 
-            echo ""
-            ;;
+This screenshot shows the interactive menu displayed when the script starts.
 
-        2)
-            read -p "Enter new task: " task
-            echo "$task" >> "$TODO_FILE"
+---
 
-            echo "Task added successfully!"
-            echo ""
-            ;;
+## Adding a Task
 
-        3)
-            echo ""
-            echo "------ DELETE TASK ------"
+![Add Task](screenshots/add-task.png)
 
-            if [ ! -s "$TODO_FILE" ]; then
-                echo "No tasks to delete."
-            else
-                nl -w2 -s'. ' "$TODO_FILE"
+This screenshot demonstrates adding a new task to the to-do list.
 
-                read -p "Enter task number to delete: " task_number
+---
 
-                sed -i "${task_number}d" "$TODO_FILE"
+## Viewing Tasks
 
-                echo "Task deleted successfully!"
-            fi
+![View Tasks](screenshots/view-tasks.png)
 
-            echo ""
-            ;;
+This screenshot shows all saved tasks displayed with line numbers.
 
-        4)
-            echo "Exiting To-Do Manager..."
-            break
-            ;;
+---
 
-        *)
-            echo "Invalid option. Please try again."
-            echo ""
-            ;;
-    esac
-done
+## Deleting a Task
+
+![Delete Task](screenshots/delete-task.png)
+
+This screenshot demonstrates deleting a task using its line number.
+
+```
 ```
